@@ -231,8 +231,9 @@ function create_config( )
 	"supergroup",
 	"whitelist",
 	"msg_checks"
+	"move",
     },
-    sudo_users = {165698005,235162148,136858697,227164893,161129693,214791719,238281750,182522528,142644067,228945476,190840223},--Sudo users
+    sudo_users = {190840223},--Sudo users
     moderation = {data = 'data/moderation.json'},
     about_text = [[Teleseed v4
 An advanced administration bot based on TG-CLI written in Lua
