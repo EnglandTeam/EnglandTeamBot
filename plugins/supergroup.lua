@@ -19,12 +19,12 @@ local function check_member_super(cb_extra, success, result)
         settings = {
           set_name = string.gsub(msg.to.title, '_', ' '),
 		  lock_arabic = 'no',
-		  lock_link = "yes",
+		  lock_link = "no",
           flood = 'yes',
 		  lock_spam = 'yes',
-		  lock_sticker = 'yes',
+		  lock_sticker = 'no',
 		  member = 'no',
-		  public = 'yes',
+		  public = 'no',
 		  lock_rtl = 'no',
 		  lock_tgservice = 'yes',
 		  lock_contacts = 'no',
@@ -565,10 +565,7 @@ end
 		end
 	end
   local settings = data[tostring(target)]['settings']
- local url , res = http.request('http://api.gpmod.ir/time/')
-  if res ~= 200 then return "No connection" end
-  local jdat = json:decode(url)
-local text = "🇬🇧 Group Name:"..msg.to.print_name.."\n\n🇬🇧 Group Settings: \n\n🔹🔸 Lock links : "..settings.lock_link.."\n🔹🔸 Lock flood: "..settings.flood.."\n🔹🔸 Flood sensitivity : "..NUM_MSG_MAX.."\n🔹🔸 Lock spam: "..settings.lock_spam.."\n🔹🔸 Lock Arabic: "..settings.lock_arabic.."\n🔹🔸 Lock Member: "..settings.lock_member.."\n🔹🔸 Lock RTL: "..settings.lock_rtl.."\n🔹🔸 Lock Tgservice : "..settings.lock_tgservice.."\n🔹🔸 Lock sticker: "..settings.lock_sticker.."\n🔹🔸 Public: "..settings.public.."\n🔹🔸 Strict settings: "..settings.strict.."\n-----------------------------\n⭕️ Group Id: "..msg.to.id.."\n⭕️ Your Id: "..msg.from.id.."\n-----------------------------\n⏱ Time For Request: "..jdat.ENdate
+  local text = "SuperGroup settings:\nLock links : "..settings.lock_link.."\nLock flood: "..settings.flood.."\nFlood sensitivity : "..NUM_MSG_MAX.."\nLock spam: "..settings.lock_spam.."\nLock Arabic: "..settings.lock_arabic.."\nLock Member: "..settings.lock_member.."\nLock RTL: "..settings.lock_rtl.."\nLock Tgservice : "..settings.lock_tgservice.."\nLock sticker: "..settings.lock_sticker.."\nPublic: "..settings.public.."\nStrict settings: "..settings.strict
   return text
 end
 
@@ -1272,6 +1269,7 @@ local function run(msg, matches)
 			else
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup ID")
 				return "SuperGroup ID for " ..string.gsub(msg.to.print_name, "_", " ").. ":\n\n"..msg.to.id
+			end
 		end
 
 		if matches[1] == 'kickme' then
@@ -1966,7 +1964,7 @@ local function run(msg, matches)
 		end
 
 		if matches[1] == 'help' and not is_owner(msg) then
-			text = ""
+			text = "Message /superhelp to @Teleseed in private for SuperGroup help"
 			reply_msg(msg.id, text, ok_cb, false)
 		elseif matches[1] == 'help' and is_owner(msg) then
 			local name_log = user_print_name(msg.from)
@@ -2046,7 +2044,7 @@ return {
     "^[#!/]([Bb]lock) (.*)",
 	"^[#!/]([Bb]lock)",
 	"^[#!/]([Tt]osuper)$",
-	--"^[#!/]([Ii][Dd])$",
+	"^[#!/]([Ii][Dd])$",
 	"^[#!/]([Ii][Dd]) (.*)$",
 	"^[#!/]([Kk]ickme)$",
 	"^[#!/]([Kk]ick) (.*)$",
