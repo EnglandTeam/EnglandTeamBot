@@ -234,6 +234,7 @@ function create_config( )
 	"move",
 	"Update",
 	"help",
+	"plugins",
     },
     sudo_users = {190840223,187155920},--Sudo users
     moderation = {data = 'data/moderation.json'},
