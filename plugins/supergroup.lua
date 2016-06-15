@@ -1271,7 +1271,7 @@ local function run(msg, matches)
 				resolve_username(username,  callbackres, cbres_extra)
 			else
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup ID")
-	return "🇬🇧 Id For You And Group\n<code> > SuperGroup Name: " ..string.gsub(msg.to.print_name, "_", " ").. "\n > SuperGroup Id: "..msg.to.id.."\n > Your Name: "..msg.from.print_name.."\n > Your Id: "..msg.from.id.."\n > Your UserName: @"..msg.from.username.."\n > Your TelegramLink: telegram.me/"..msg.from.username			end
+				return "🔰 SuperGroup Name: " ..string.gsub(msg.to.print_name, "_", " ").. "\n🔰 SuperGroup Id: "..msg.to.id.."\n⚠️ Your Name: "..msg.from.print_name.."\n⚠️ Your Id: "..msg.from.id.."\n⚠️ Your UserName: @"..msg.from.username.."\n⚠️ Your TelegramLink: telegram.me/"..msg.from.username
 		end
 
 		if matches[1] == 'kickme' then
