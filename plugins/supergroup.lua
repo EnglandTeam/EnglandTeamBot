@@ -1271,7 +1271,7 @@ local function run(msg, matches)
 				resolve_username(username,  callbackres, cbres_extra)
 			else
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup ID")
-				return "🇬🇧 Id For You And Group \n\n > Group Name: <code>" ..string.gsub(msg.to.print_name, "_", " ").. "</code>\n > Group Id: "..msg.to.id.."\n\n > Your UserName: @"..msg.from.username.."\n > Your Id: "..msg.from.id
+				return "🇬🇧 Id For You And Group \n\n > Group Name: <code>" ..string.gsub(msg.to.print_name, "_", " ").. "  </code>\n > Group Id: "..msg.to.id.."\n\n > Your UserName: @"..msg.from.username.."\n > Your Id: "..msg.from.id
 			end
 		end
 
