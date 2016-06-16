@@ -187,21 +187,7 @@ local function lock_group_links(msg, data, target)
   if not is_momod(msg) then
     return
   end
-  local group_link_lock = data[tostring(target)]['settings']['lock_link']
-  if group_link_lock == 'yes' then
-    return 'Link posting is already locked'
-  else
-    data[tostring(target)]['settings']['lock_link'] = 'yes'
-    save_data(_config.moderation.data, data)
-    return 'Link posting has been locked'
-  end
-end
-
-local function unlock_group_links(msg, data, target)
-  if not is_momod(msg) then
-    return
-  end
-  local group_link_lock = data[tostring(target)]['settings']['lock_link']
+ local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'no' then
     return '🇬🇧 Already Unlocked'
   else
