@@ -203,11 +203,11 @@ local function unlock_group_links(msg, data, target)
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'no' then
-    return 'Link posting is not locked'
+    return '🇬🇧 Already Unlocked'
   else
     data[tostring(target)]['settings']['lock_link'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Link posting has been unlocked'
+    return '🇬🇧 UnLocked'
   end
 end
 
@@ -216,15 +216,15 @@ local function lock_group_spam(msg, data, target)
     return
   end
   if not is_owner(msg) then
-    return "Owners only!"
+    return ""
   end
   local group_spam_lock = data[tostring(target)]['settings']['lock_spam']
   if group_spam_lock == 'yes' then
-    return 'SuperGroup spam is already locked'
+    return '🇬🇧 Already Locked'
   else
     data[tostring(target)]['settings']['lock_spam'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'SuperGroup spam has been locked'
+    return '🇬🇧 <code>Locked</code>'
   end
 end
 
@@ -234,11 +234,11 @@ local function unlock_group_spam(msg, data, target)
   end
   local group_spam_lock = data[tostring(target)]['settings']['lock_spam']
   if group_spam_lock == 'no' then
-    return 'SuperGroup spam is not locked'
+    return '🇬🇧 Already Unlocked'
   else
     data[tostring(target)]['settings']['lock_spam'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'SuperGroup spam has been unlocked'
+    return '🇬🇧 Unlocked'
   end
 end
 
@@ -248,11 +248,11 @@ local function lock_group_flood(msg, data, target)
   end
   local group_flood_lock = data[tostring(target)]['settings']['flood']
   if group_flood_lock == 'yes' then
-    return 'Flood is already locked'
+    return '🇬🇧 Already Locked'
   else
     data[tostring(target)]['settings']['flood'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Flood has been locked'
+    return '🇬🇧 Locked'
   end
 end
 
@@ -568,7 +568,7 @@ end
    local url , res = http.request('http://api.gpmod.ir/time/')
   if res ~= 200 then return "No connection" end
   local jdat = json:decode(url)
-local text = '🇬🇧 Group Name: '..msg.to.print_name..'\n\n🇬🇧 Group Settings: \n\n🔹🔸 Lock links : '..settings.lock_link..'\n🔹🔸 Lock flood: '..settings.flood..'\n🔹🔸 Flood sensitivity : '..NUM_MSG_MAX..'\n🔹🔸 Lock spam: '..settings.lock_spam..'\n🔹🔸 Lock Arabic: '..settings.lock_arabic..'\n🔹🔸 Lock Member: '..settings.lock_member..'\n🔹🔸 Lock RTL: '..settings.lock_rtl..'\n🔹🔸 Lock Tgservice : '..settings.lock_tgservice..'\n🔹🔸 Lock sticker: '..settings.lock_sticker..'\n🔹🔸 Public: '..settings.public..'\n🔹🔸 Strict settings: '..settings.strict..'\n-----------------------------\n⭕️ Group Id: '..msg.to.id..'\n⭕️ Your Id: '..msg.from.id..'\n-----------------------------\n⏱ Time For Request: '..jdat.ENdate
+local text = '🇬🇧 Group Settings: \n\n🔹🔸 Lock links : '..settings.lock_link..'\n🔹🔸 Lock flood: '..settings.flood..'\n🔹🔸 Flood sensitivity : '..NUM_MSG_MAX..'\n🔹🔸 Lock spam: '..settings.lock_spam..'\n🔹🔸 Lock Arabic: '..settings.lock_arabic..'\n🔹🔸 Lock Member: '..settings.lock_member..'\n🔹🔸 Lock RTL: '..settings.lock_rtl..'\n🔹🔸 Lock Tgservice : '..settings.lock_tgservice..'\n🔹🔸 Lock sticker: '..settings.lock_sticker..'\n🔹🔸 Public: '..settings.public..'\n🔹🔸 Strict settings: '..settings.strict..'\n-----------------------------\n⭕️ Group Name: '..msg.to.print_name..'\n⭕️ Group Id: '..msg.to.id..'\n⭕️ Your Id: '..msg.from.id..'\n-----------------------------\n⏱ Time For Request: '..jdat.ENdate
 return text
 end
 
@@ -1271,7 +1271,7 @@ local function run(msg, matches)
 				resolve_username(username,  callbackres, cbres_extra)
 			else
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup ID")
-				return "🇬🇧 Id For You And Group \n\n > Group Name: <code>" ..string.gsub(msg.to.print_name, "_", " ").. "  </code>\n > Group Id: <code>"..msg.to.id.."  </code>\n\n > Your UserName: <code>@"..msg.from.username.."  </code>\n > Your Id: <code>"..msg.from.id.."  </code>"
+				return "🇬🇧 Id For You And Group \n\n > Group Name: <code>" ..string.gsub(msg.to.print_name, "_", " ").. "  </code>\n > Group Id: <code>"..msg.to.id.."  </code>\n\n > Your UserName: <code>@"..msg.from.username.."  </code>\n > Your Id: <code>"..msg.from.id.."  </code> > Your Name: <code>"..msg.from.print_name.."  </code"
 			end
 		end
 
@@ -1967,7 +1967,7 @@ local function run(msg, matches)
 		end
 
 		if matches[1] == 'help' and not is_owner(msg) then
-			text = "Message /superhelp to @Teleseed in private for SuperGroup help"
+			text = ""
 			reply_msg(msg.id, text, ok_cb, false)
 		elseif matches[1] == 'help' and is_owner(msg) then
 			local name_log = user_print_name(msg.from)
