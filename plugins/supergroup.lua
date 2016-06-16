@@ -186,10 +186,11 @@ end
 local function lock_group_links(msg, data, target)
   if not is_momod(msg) then
     return
-  end
+end
+
 local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'no' then
-    return '🇬🇧 Already Unlocked'
+    return '🇬🇧 <code>Already Unlocked    </code>'
   else
     data[tostring(target)]['settings']['lock_link'] = 'no'
     save_data(_config.moderation.data, data)
@@ -210,7 +211,7 @@ local function lock_group_spam(msg, data, target)
   else
     data[tostring(target)]['settings']['lock_spam'] = 'yes'
     save_data(_config.moderation.data, data)
-    return '🇬🇧 <code>Locked  </code>'
+    return '🇬🇧 <code>Locked    </code>'
   end
 end
 
